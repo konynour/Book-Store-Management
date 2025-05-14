@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>viewBooks</class>
+ <widget class="QDialog" name="viewBooks">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>📚 View Books</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QDialog {
+        background-color: #34495e;  /* لون الخلفية مشابه لـ purBox */
+    }
+    QLabel#label {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;  /* نص باللون الأبيض */
+    }
+    QTableWidget {
+        background-color: #ffffff;
+        gridline-color: #d0d0d0;
+        font-size: 16px;
+        alternate-background-color: #f0f0f0;
+    }
+    QTableWidget QTableWidgetItem {
+        background-color: #f9f9f9;  /* اللون الجديد لخلايا الكتابة */
+    }
+    QTableWidget::item:selected {
+        background-color: #27ae60;  /* لون خلفية الخلايا المحددة قريب من لون الزر */
+    }
+    QHeaderView::section {
+        background-color: #2e3a59;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+    }
+    QPushButton {
+        background-color: #27ae60;  /* لون الزر قريب من purBox */
+        color: white;
+        font-size: 16px;
+        border-radius: 10px;
+        padding: 10px 20px;
+    }
+    QPushButton:hover {
+        background-color: #1e8449;  /* لون الزر عند التحويم */
+    }
+   </string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>10</y>
+     <width>300</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>📚 Available Books</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>700</width>
+     <height>380</height>
+    </rect>
+   </property>
+   <property name="columnCount">
+    <number>3</number>
+   </property>
+   <property name="rowCount">
+    <number>0</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>Book Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Price</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Quantity</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="closeButton">
+    <property name="geometry">
+        <rect>
+            <x>650</x>
+            <y>450</y>
+            <width>100</width>
+            <height>40</height>
+        </rect>
+    </property>
+    <property name="text">
+        <string>exit</string>
+    </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

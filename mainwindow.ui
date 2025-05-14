@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>894</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Book Store</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+    QWidget {
+        background-color: #2c3e50;
+    }
+    </string>
+   </property>
+
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>400</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+     QLabel {
+         font-size: 32px;
+         font-weight: bold;
+         color: white;
+         background-color: transparent;
+         qproperty-alignment: AlignCenter;
+     }
+     </string>
+    </property>
+    <property name="text">
+     <string>📚Book Store Management </string>
+    </property>
+   </widget>
+
+   <!-- زر إضافة كتاب -->
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>120</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+     QPushButton {
+         background-color: #3498db;
+         color: white;
+         font-size: 16px;
+         border-radius: 10px;
+         padding: 10px;
+     }
+     QPushButton:hover {
+         background-color: #2980b9;
+     }
+     </string>
+    </property>
+    <property name="text">
+     <string>➕ Add Book</string>
+    </property>
+   </widget>
+
+   <!-- زر شراء -->
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>200</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+     QPushButton {
+         background-color: #27ae60;
+         color: white;
+         font-size: 16px;
+         border-radius: 10px;
+         padding: 10px;
+     }
+     QPushButton:hover {
+         background-color: #1e8449;
+     }
+     </string>
+    </property>
+    <property name="text">
+     <string>🛒 Purchase</string>
+    </property>
+   </widget>
+
+   <!-- زر عرض الكتب -->
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>280</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+     QPushButton {
+         background-color: #e67e22;
+         color: white;
+         font-size: 16px;
+         border-radius: 10px;
+         padding: 10px;
+     }
+     QPushButton:hover {
+         background-color: #d35400;
+     }
+     </string>
+    </property>
+    <property name="text">
+     <string>📖 View Books</string>
+    </property>
+   </widget>
+
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>894</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
