@@ -2,151 +2,213 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>894</width>
-    <height>548</height>
-   </rect>
-  </property>
   <property name="windowTitle">
-   <string>Book Store</string>
+   <string>Book Store Management</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QMainWindow {
+        background-color: #34495e;
+    }
+   </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="styleSheet">
-    <string notr="true">
-    QWidget {
-        background-color: #2c3e50;
-    }
-    </string>
-   </property>
-
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>20</y>
-      <width>400</width>
-      <height>60</height>
-     </rect>
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>15</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">
-     QLabel {
-         font-size: 32px;
-         font-weight: bold;
-         color: white;
-         background-color: transparent;
-         qproperty-alignment: AlignCenter;
-     }
-     </string>
+    <property name="margin">
+     <number>20</number>
     </property>
-    <property name="text">
-     <string>📚Book Store Management </string>
-    </property>
-   </widget>
-
-   <!-- زر إضافة كتاب -->
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>120</y>
-      <width>251</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-     QPushButton {
-         background-color: #3498db;
-         color: white;
-         font-size: 16px;
-         border-radius: 10px;
-         padding: 10px;
-     }
-     QPushButton:hover {
-         background-color: #2980b9;
-     }
-     </string>
-    </property>
-    <property name="text">
-     <string>➕ Add Book</string>
-    </property>
-   </widget>
-
-   <!-- زر شراء -->
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>200</y>
-      <width>251</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-     QPushButton {
-         background-color: #27ae60;
-         color: white;
-         font-size: 16px;
-         border-radius: 10px;
-         padding: 10px;
-     }
-     QPushButton:hover {
-         background-color: #1e8449;
-     }
-     </string>
-    </property>
-    <property name="text">
-     <string>🛒 Purchase</string>
-    </property>
-   </widget>
-
-   <!-- زر عرض الكتب -->
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>280</y>
-      <width>251</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-     QPushButton {
-         background-color: #e67e22;
-         color: white;
-         font-size: 16px;
-         border-radius: 10px;
-         padding: 10px;
-     }
-     QPushButton:hover {
-         background-color: #d35400;
-     }
-     </string>
-    </property>
-    <property name="text">
-     <string>📖 View Books</string>
-    </property>
-   </widget>
-
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QWidget" name="containerWidget">
+      <property name="maximumWidth">
+       <number>400</number>
+      </property>
+      <layout class="QVBoxLayout" name="containerLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="titleLabel">
+         <property name="text">
+          <string>📚 Book Store Management</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QLabel {
+               font-size: 28px;
+               font-weight: bold;
+               color: white;
+               background-color: transparent;
+               text-align: center;
+               padding: 10px;
+               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+           }
+          </string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addBookButton">
+         <property name="text">
+          <string>➕ Add Book</string>
+         </property>
+         <property name="minimumHeight">
+          <number>50</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+               background-color: #3498db;
+               color: white;
+               font-size: 16px;
+               border-radius: 8px;
+               padding: 12px;
+               border: none;
+           }
+           QPushButton:hover {
+               background-color: #2980b9;
+           }
+           QPushButton:pressed {
+               background-color: #1f618d;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="purchaseButton">
+         <property name="text">
+          <string>🛒 Purchase</string>
+         </property>
+         <property name="minimumHeight">
+          <number>50</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+               background-color: #27ae60;
+               color: white;
+               font-size: 16px;
+               border-radius: 8px;
+               padding: 12px;
+               border: none;
+           }
+           QPushButton:hover {
+               background-color: #1e8449;
+           }
+           QPushButton:pressed {
+               background-color: #166d3b;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="viewBooksButton">
+         <property name="text">
+          <string>📖 View Books</string>
+         </property>
+         <property name="minimumHeight">
+          <number>50</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+               background-color: #e67e22;
+               color: white;
+               font-size: 16px;
+               border-radius: 8px;
+               padding: 12px;
+               border: none;
+           }
+           QPushButton:hover {
+               background-color: #d35400;
+           }
+           QPushButton:pressed {
+               background-color: #a84300;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="editBookButton">
+         <property name="text">
+          <string>✏️ Edit Book</string>
+         </property>
+         <property name="minimumHeight">
+          <number>50</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+               background-color: #9b59b6;
+               color: white;
+               font-size: 16px;
+               border-radius: 8px;
+               padding: 12px;
+               border: none;
+           }
+           QPushButton:hover {
+               background-color: #8e44ad;
+           }
+           QPushButton:pressed {
+               background-color: #6c3483;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bookDetailsButton">
+         <property name="text">
+          <string>📊 sales History</string>
+         </property>
+         <property name="minimumHeight">
+          <number>50</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+               background-color: #1abc9c;
+               color: white;
+               font-size: 16px;
+               border-radius: 8px;
+               padding: 12px;
+               border: none;
+           }
+           QPushButton:hover {
+               background-color: #16a085;
+           }
+           QPushButton:pressed {
+               background-color: #117864;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>894</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
- <connections/>
 </ui>

@@ -20,6 +20,8 @@ class viewBooks : public QDialog
 public:
     explicit viewBooks(QWidget *parent = nullptr);
     ~viewBooks();
+    void loadBooksFromDatabase();  // هنا تعريف الدالة
+
 
     // دالة setBooks لعرض الكتب في الجدول
     void setBooks(const QStringList &names, const QStringList &prices);

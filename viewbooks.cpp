@@ -1,6 +1,9 @@
 #include "viewbooks.h"
 #include "ui_viewbooks.h"
 #include <QDebug>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QTableWidgetItem>
 
 viewBooks::viewBooks(QWidget *parent) :
     QDialog(parent),
@@ -11,8 +14,8 @@ viewBooks::viewBooks(QWidget *parent) :
     // ربط زر "إغلاق" مع وظيفة إغلاق النافذة
     connect(ui->closeButton, &QPushButton::clicked, this, &QDialog::accept);
 
-    // يمكنك استدعاء loadBooks لملء الجدول ببعض البيانات التجريبية
-    loadBooks();
+    // الآن ما نحتاجش نملأ بيانات ثابتة عند الفتح
+    // loadBooks();  // نلغيها، لأننا هنحمل من قاعدة البيانات مباشرة
 }
 
 viewBooks::~viewBooks()
@@ -20,20 +23,39 @@ viewBooks::~viewBooks()
     delete ui;
 }
 
+// تحميل الكتب من قاعدة البيانات SQLite وعرضها في الجدول
+void viewBooks::loadBooksFromDatabase()
+{
+    QSqlQuery query("SELECT name, price FROM books");
+
+    ui->tableWidget->clearContents();
+
+    int row = 0;
+    // نفرغ الجدول أولاً
+    ui->tableWidget->setRowCount(0);
+
+    while (query.next()) {
+        ui->tableWidget->insertRow(row);
+
+        QString name = query.value(0).toString();
+        QString price = query.value(1).toString();
+
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(name));
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(price));
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem("1"));  // الكمية ثابتة 1 أو ممكن تعدلها
+
+        row++;
+    }
+
+    if (row == 0) {
+        qDebug() << "No books found in database.";
+    }
+}
+
+// دوال موجودة ممكن تستخدمها لاحقاً، يمكن تحذفها لو مش محتاجها
 void viewBooks::loadBooks()
 {
-    ui->tableWidget->setRowCount(3);
-    ui->tableWidget->setItem(0, 0, new QTableWidgetItem("Book A"));
-    ui->tableWidget->setItem(0, 1, new QTableWidgetItem("100"));
-    ui->tableWidget->setItem(0, 2, new QTableWidgetItem("5"));
-
-    ui->tableWidget->setItem(1, 0, new QTableWidgetItem("Book B"));
-    ui->tableWidget->setItem(1, 1, new QTableWidgetItem("150"));
-    ui->tableWidget->setItem(1, 2, new QTableWidgetItem("2"));
-
-    ui->tableWidget->setItem(2, 0, new QTableWidgetItem("Book C"));
-    ui->tableWidget->setItem(2, 1, new QTableWidgetItem("90"));
-    ui->tableWidget->setItem(2, 2, new QTableWidgetItem("10"));
+    // مش محتاجين هذه الآن
 }
 
 void viewBooks::addFun()
@@ -58,17 +80,13 @@ void viewBooks::onPur(const QString &n, const QString &q)
 
 void viewBooks::showBooks()
 {
-    qDebug() << "showBooks() called";
-    // هنا يمكنك إضافة الشيفرة الفعلية لعرض الكتب
+
+    loadBooksFromDatabase();
+    this->show();
 }
 
 void viewBooks::setBooks(const QStringList &names, const QStringList &prices)
 {
-    ui->tableWidget->setRowCount(names.size());
-
-    for (int i = 0; i < names.size(); ++i) {
-        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(names[i]));
-        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(prices[i]));
-        ui->tableWidget->setItem(i, 2, new QTableWidgetItem("1"));
-    }
+    // دي من الماضي لما كنت بتستخدم الـ QStringList مش من قاعدة بيانات
+    // ممكن تحذفها أو تخليها تدعو loadBooksFromDatabase بدلًا منها
 }

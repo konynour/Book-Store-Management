@@ -1,49 +1,52 @@
-QT       += core gui \
-    quick
+# إعدادات Qt الأساسية
+QT += core gui widgets sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+# إزالة quick لأن المشروع لا يستخدم QML
+# QT += quick # تم تعطيلها لأنها غير مستخدمة
 
+# تفعيل معيار C++17
 CONFIG += c++17
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+# تعطيل واجهات برمجة التطبيقات المهجورة (اختياري)
+# DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # يعطل جميع واجهات البرمجة المهجورة قبل Qt 6.0.0
 
+# ملفات المصدر
 SOURCES += \
+    SalesHistory.cpp \
     addbox.cpp \
+    editbook.cpp \
+    loginpage.cpp \
     main.cpp \
     mainwindow.cpp \
     purbox.cpp \
     viewbooks.cpp
 
+# ملفات الرأس
 HEADERS += \
+    SalesHistory.h \
     addbox.h \
+    editbook.h \
+    loginpage.h \
     mainwindow.h \
     purbox.h \
     viewbooks.h
 
+# ملفات الواجهات
 FORMS += \
+    SalesHistory.ui \
     addbox.ui \
-    mainwindow.ui \
-    purbox.ui \
-    viewbooks.ui \
-    viewbooks.ui
-
-
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
-
-FORMS += \
-    addbox.ui \
+    editbook.ui \
+    loginpage.ui \
     mainwindow.ui \
     purbox.ui \
     viewbooks.ui
 
+# ملفات الموارد
 
-# Default rules for deployment.
+# قواعد النشر الافتراضية
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+# تنظيف الملفات المولدة عند إعادة البناء (اختياري)
+QMAKE_CLEAN += ui_*.h

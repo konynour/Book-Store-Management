@@ -1,16 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QMainWindow>
+#include <QStringList>
 #include "addbox.h"
 #include "purbox.h"
-#include "viewbooks.h"  // إضافة هذا السطر لتضمين ملف الرأس الخاص بـ viewBooks
-
-#include <QMainWindow>
+#include "viewbooks.h"
+#include "editbook.h"
+#include "SalesHistory.h"  // غيرنا من bookdialog.h إلى saleshistory.h
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -18,10 +18,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-    void showBooks(); // تعريف دالة showBooks
 
 private slots:
     void addFun();
@@ -30,14 +28,30 @@ private slots:
     void purFun();
     void onPur(const QString &n, const QString &q);
 
+    void showBooks();
+
+    void editBookFun();
+    void onBookEdited(const QString &oldName, const QString &newName, const QString &newPrice);
+
+    void showBookDetails();  // عرض تفاصيل الكتاب الجديدة
+
 private:
     Ui::MainWindow *ui;
     addBox *addbox;
     purBox *purbox;
-    viewBooks *viewbooks; // إضافة المتغير هنا
-    bool found;  // إضافة المتغير found الذي يستخدم في البحث
-    QStringList nameList;  // إضافة المتغير nameList لحفظ أسماء الكتب
-    QStringList priceList; // إضافة المتغير priceList لحفظ أسعار الكتب
+    viewBooks *viewbooks;
+    editbook *editDialog;
+    SalesHistory *detailsDialog;  // نوع الجديد
+    QStringList nameList;
+    QStringList priceList;
+    void connectToDatabase();  // **تعريف الدالة هنا**
+    void createTables();
+    void createAdminUserIfNotExists();
+
+    bool found;
+
+
+
 };
 
 #endif // MAINWINDOW_H

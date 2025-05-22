@@ -13,9 +13,9 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,90 +24,174 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QLabel *label;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QVBoxLayout *mainLayout;
+    QWidget *containerWidget;
+    QVBoxLayout *containerLayout;
+    QLabel *titleLabel;
+    QPushButton *addBookButton;
+    QPushButton *purchaseButton;
+    QPushButton *viewBooksButton;
+    QPushButton *editBookButton;
+    QPushButton *bookDetailsButton;
+    QSpacerItem *verticalSpacer;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(894, 548);
+        MainWindow->setStyleSheet(QString::fromUtf8("\n"
+"    QMainWindow {\n"
+"        background-color: #34495e;\n"
+"    }\n"
+"   "));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        centralwidget->setStyleSheet(QString::fromUtf8("\n"
-"    QWidget {\n"
-"        background-color: #2c3e50;\n"
-"    }\n"
-"    "));
-        label = new QLabel(centralwidget);
-        label->setObjectName("label");
-        label->setGeometry(QRect(250, 20, 400, 60));
-        label->setStyleSheet(QString::fromUtf8("\n"
-"     QLabel {\n"
-"         font-size: 32px;\n"
-"         font-weight: bold;\n"
-"         color: white;\n"
-"         background-color: transparent;\n"
-"         qproperty-alignment: AlignCenter;\n"
-"     }\n"
-"     "));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(310, 120, 251, 51));
-        pushButton->setStyleSheet(QString::fromUtf8("\n"
-"     QPushButton {\n"
-"         background-color: #3498db;\n"
-"         color: white;\n"
-"         font-size: 16px;\n"
-"         border-radius: 10px;\n"
-"         padding: 10px;\n"
-"     }\n"
-"     QPushButton:hover {\n"
-"         background-color: #2980b9;\n"
-"     }\n"
-"     "));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(310, 200, 251, 51));
-        pushButton_2->setStyleSheet(QString::fromUtf8("\n"
-"     QPushButton {\n"
-"         background-color: #27ae60;\n"
-"         color: white;\n"
-"         font-size: 16px;\n"
-"         border-radius: 10px;\n"
-"         padding: 10px;\n"
-"     }\n"
-"     QPushButton:hover {\n"
-"         background-color: #1e8449;\n"
-"     }\n"
-"     "));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(310, 280, 251, 51));
-        pushButton_3->setStyleSheet(QString::fromUtf8("\n"
-"     QPushButton {\n"
-"         background-color: #e67e22;\n"
-"         color: white;\n"
-"         font-size: 16px;\n"
-"         border-radius: 10px;\n"
-"         padding: 10px;\n"
-"     }\n"
-"     QPushButton:hover {\n"
-"         background-color: #d35400;\n"
-"     }\n"
-"     "));
+        mainLayout = new QVBoxLayout(centralwidget);
+        mainLayout->setSpacing(15);
+        mainLayout->setContentsMargins(20, 20, 20, 20);
+        mainLayout->setObjectName("mainLayout");
+        containerWidget = new QWidget(centralwidget);
+        containerWidget->setObjectName("containerWidget");
+        containerWidget->setMaximumWidth(400);
+        containerLayout = new QVBoxLayout(containerWidget);
+        containerLayout->setSpacing(10);
+        containerLayout->setObjectName("containerLayout");
+        containerLayout->setContentsMargins(0, 0, 0, 0);
+        titleLabel = new QLabel(containerWidget);
+        titleLabel->setObjectName("titleLabel");
+        titleLabel->setStyleSheet(QString::fromUtf8("\n"
+"           QLabel {\n"
+"               font-size: 28px;\n"
+"               font-weight: bold;\n"
+"               color: white;\n"
+"               background-color: transparent;\n"
+"               text-align: center;\n"
+"               padding: 10px;\n"
+"               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);\n"
+"           }\n"
+"          "));
+        titleLabel->setAlignment(Qt::AlignCenter);
+
+        containerLayout->addWidget(titleLabel);
+
+        addBookButton = new QPushButton(containerWidget);
+        addBookButton->setObjectName("addBookButton");
+        addBookButton->setMinimumHeight(50);
+        addBookButton->setStyleSheet(QString::fromUtf8("\n"
+"           QPushButton {\n"
+"               background-color: #3498db;\n"
+"               color: white;\n"
+"               font-size: 16px;\n"
+"               border-radius: 8px;\n"
+"               padding: 12px;\n"
+"               border: none;\n"
+"           }\n"
+"           QPushButton:hover {\n"
+"               background-color: #2980b9;\n"
+"           }\n"
+"           QPushButton:pressed {\n"
+"               background-color: #1f618d;\n"
+"           }\n"
+"          "));
+
+        containerLayout->addWidget(addBookButton);
+
+        purchaseButton = new QPushButton(containerWidget);
+        purchaseButton->setObjectName("purchaseButton");
+        purchaseButton->setMinimumHeight(50);
+        purchaseButton->setStyleSheet(QString::fromUtf8("\n"
+"           QPushButton {\n"
+"               background-color: #27ae60;\n"
+"               color: white;\n"
+"               font-size: 16px;\n"
+"               border-radius: 8px;\n"
+"               padding: 12px;\n"
+"               border: none;\n"
+"           }\n"
+"           QPushButton:hover {\n"
+"               background-color: #1e8449;\n"
+"           }\n"
+"           QPushButton:pressed {\n"
+"               background-color: #166d3b;\n"
+"           }\n"
+"          "));
+
+        containerLayout->addWidget(purchaseButton);
+
+        viewBooksButton = new QPushButton(containerWidget);
+        viewBooksButton->setObjectName("viewBooksButton");
+        viewBooksButton->setMinimumHeight(50);
+        viewBooksButton->setStyleSheet(QString::fromUtf8("\n"
+"           QPushButton {\n"
+"               background-color: #e67e22;\n"
+"               color: white;\n"
+"               font-size: 16px;\n"
+"               border-radius: 8px;\n"
+"               padding: 12px;\n"
+"               border: none;\n"
+"           }\n"
+"           QPushButton:hover {\n"
+"               background-color: #d35400;\n"
+"           }\n"
+"           QPushButton:pressed {\n"
+"               background-color: #a84300;\n"
+"           }\n"
+"          "));
+
+        containerLayout->addWidget(viewBooksButton);
+
+        editBookButton = new QPushButton(containerWidget);
+        editBookButton->setObjectName("editBookButton");
+        editBookButton->setMinimumHeight(50);
+        editBookButton->setStyleSheet(QString::fromUtf8("\n"
+"           QPushButton {\n"
+"               background-color: #9b59b6;\n"
+"               color: white;\n"
+"               font-size: 16px;\n"
+"               border-radius: 8px;\n"
+"               padding: 12px;\n"
+"               border: none;\n"
+"           }\n"
+"           QPushButton:hover {\n"
+"               background-color: #8e44ad;\n"
+"           }\n"
+"           QPushButton:pressed {\n"
+"               background-color: #6c3483;\n"
+"           }\n"
+"          "));
+
+        containerLayout->addWidget(editBookButton);
+
+        bookDetailsButton = new QPushButton(containerWidget);
+        bookDetailsButton->setObjectName("bookDetailsButton");
+        bookDetailsButton->setMinimumHeight(50);
+        bookDetailsButton->setStyleSheet(QString::fromUtf8("\n"
+"           QPushButton {\n"
+"               background-color: #1abc9c;\n"
+"               color: white;\n"
+"               font-size: 16px;\n"
+"               border-radius: 8px;\n"
+"               padding: 12px;\n"
+"               border: none;\n"
+"           }\n"
+"           QPushButton:hover {\n"
+"               background-color: #16a085;\n"
+"           }\n"
+"           QPushButton:pressed {\n"
+"               background-color: #117864;\n"
+"           }\n"
+"          "));
+
+        containerLayout->addWidget(bookDetailsButton);
+
+
+        mainLayout->addWidget(containerWidget, 0, Qt::AlignHCenter);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        mainLayout->addItem(verticalSpacer);
+
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 894, 25));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -116,11 +200,13 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Book Store", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "\360\237\223\232Book Store Management ", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "\342\236\225 Add Book", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\360\237\233\222 Purchase", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "\360\237\223\226 View Books", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Book Store Management", nullptr));
+        titleLabel->setText(QCoreApplication::translate("MainWindow", "\360\237\223\232 Book Store Management", nullptr));
+        addBookButton->setText(QCoreApplication::translate("MainWindow", "\342\236\225 Add Book", nullptr));
+        purchaseButton->setText(QCoreApplication::translate("MainWindow", "\360\237\233\222 Purchase", nullptr));
+        viewBooksButton->setText(QCoreApplication::translate("MainWindow", "\360\237\223\226 View Books", nullptr));
+        editBookButton->setText(QCoreApplication::translate("MainWindow", "\342\234\217\357\270\217 Edit Book", nullptr));
+        bookDetailsButton->setText(QCoreApplication::translate("MainWindow", "\360\237\223\212 sales History", nullptr));
     } // retranslateUi
 
 };

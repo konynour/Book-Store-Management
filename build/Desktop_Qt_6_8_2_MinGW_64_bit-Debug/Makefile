@@ -303,15 +303,9 @@ Makefile: ../../bookstore.pro ../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs
 		../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs/features/yacc.prf \
 		../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs/features/lex.prf \
 		../../bookstore.pro \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Quick.prl \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6OpenGL.prl \
 		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Widgets.prl \
 		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Gui.prl \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6QmlMeta.prl \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6QmlModels.prl \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6QmlWorkerScript.prl \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Qml.prl \
-		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Network.prl \
+		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Sql.prl \
 		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Core.prl \
 		../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6EntryPoint.prl \
 		../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs/features/build_pass.prf
@@ -549,15 +543,9 @@ Makefile: ../../bookstore.pro ../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs
 ../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs/features/yacc.prf:
 ../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs/features/lex.prf:
 ../../bookstore.pro:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Quick.prl:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6OpenGL.prl:
 ../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Widgets.prl:
 ../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Gui.prl:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6QmlMeta.prl:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6QmlModels.prl:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6QmlWorkerScript.prl:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Qml.prl:
-../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Network.prl:
+../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Sql.prl:
 ../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6Core.prl:
 ../../../../Users/nour/batu/6.8.2/mingw_64/lib/Qt6EntryPoint.prl:
 ../../../../Users/nour/batu/6.8.2/mingw_64/mkspecs/features/build_pass.prf:
@@ -569,6 +557,7 @@ qmake_all: FORCE
 make_first: debug-make_first release-make_first  FORCE
 all: debug-all release-all  FORCE
 clean: debug-clean release-clean  FORCE
+	-$(DEL_FILE) ui_*.h
 distclean: debug-distclean release-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SalesHistory</class>
+ <widget class="QDialog" name="SalesHistory">
+  <property name="windowTitle">
+   <string>Sales History</string>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>650</width>
+    <height>450</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QDialog {
+      background-color: #2c3e50;
+      color: white;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    QLabel {
+      font-size: 13px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #ecf0f1;
+    }
+    QPushButton {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 10px 18px;
+      border: none;
+      min-width: 80px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    QPushButton:hover {
+      background-color: #2980b9;
+    }
+    QPushButton:pressed {
+      background-color: #1f618d;
+    }
+    QTableWidget {
+      background-color: #34495e;
+      alternate-background-color: #3e536b;
+      gridline-color: #5d6d7e;
+      font-size: 14px;
+      selection-background-color: #16a085;
+      selection-color: white;
+      border-radius: 8px;
+      padding: 5px;
+    }
+    QTableWidget::item:hover {
+      background-color: #2980b9;
+      color: white;
+    }
+    QHeaderView::section {
+      background-color: #1abc9c;
+      color: black;
+      font-weight: bold;
+      padding: 6px;
+      border: none;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>12</number>
+   </property>
+   <property name="margin">
+    <number>20</number>
+   </property>
+
+   <!-- Title -->
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+      <string>📊 Sales History</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <bold>true</bold>
+       <weight>75</weight>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+       color: #1abc9c;
+       text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+      </string>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Book info layout -->
+   <item>
+    <layout class="QHBoxLayout" name="bookInfoLayout">
+     <property name="spacing">
+      <number>30</number>
+     </property>
+
+     <item>
+      <widget class="QLabel" name="labelBookNameTitle">
+       <property name="text">
+        <string>Book Name:</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelBookName">
+       <property name="text">
+        <string>---</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QLabel" name="labelBookPriceTitle">
+       <property name="text">
+        <string>Price:</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelBookPrice">
+       <property name="text">
+        <string>---</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- Table showing sales records -->
+   <item>
+    <widget class="QTableWidget" name="salesTable">
+     <property name="columnCount">
+      <number>5</number>
+     </property>
+     <property name="rowCount">
+      <number>0</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>Sale ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Book Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Quantity</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Total Price</string>
+      </property>
+     </column>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+    </widget>
+   </item>
+
+   <!-- Buttons layout -->
+   <item>
+    <layout class="QHBoxLayout" name="buttonsLayout">
+     <property name="spacing">
+      <number>25</number>
+     </property>
+
+     <item>
+      <widget class="QPushButton" name="refreshButton">
+       <property name="text">
+        <string>🔄 Refresh</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="exportButton">
+       <property name="text">
+        <string>📤 Export</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="closeButton">
+       <property name="text">
+        <string>✖ Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SalesHistory</receiver>
+   <slot>reject()</slot>
+  </connection>
+ </connections>
+</ui>

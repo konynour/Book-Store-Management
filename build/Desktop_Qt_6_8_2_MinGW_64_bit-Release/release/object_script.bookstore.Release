@@ -1,0 +1,15 @@
+release/SalesHistory.o
+release/addbox.o
+release/editbook.o
+release/loginpage.o
+release/main.o
+release/mainwindow.o
+release/purbox.o
+release/viewbooks.o
+release/moc_SalesHistory.o
+release/moc_addbox.o
+release/moc_editbook.o
+release/moc_loginpage.o
+release/moc_mainwindow.o
+release/moc_purbox.o
+release/moc_viewbooks.o
