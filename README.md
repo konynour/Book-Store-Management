@@ -95,4 +95,3 @@ This project is open-source and free to use.
 
 ---
 
-If you want, I can help you generate a markdown file with this content or customize it further!
