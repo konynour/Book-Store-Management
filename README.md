@@ -1,4 +1,3 @@
-Sure! Here's a README template tailored for your bookstore Qt project with SQLite integration, styled and structured based on your conversation and code context:
 
 ---
 
