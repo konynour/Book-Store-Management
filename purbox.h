@@ -20,6 +20,8 @@ public:
 
 private slots:
     void pur();
+    void on_deleteButton_clicked();
+
 
 private:
     Ui::purBox *ui;

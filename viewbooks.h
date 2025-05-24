@@ -33,6 +33,8 @@ private slots:
     void onAdd(const QString &n, const QString &p);
     void onPur(const QString &n, const QString &q);
     void showBooks();
+    void on_deleteButton_clicked();
+
 
 private:
     void loadBooks();

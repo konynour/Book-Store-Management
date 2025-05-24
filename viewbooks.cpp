@@ -4,6 +4,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QTableWidgetItem>
+#include <QMessageBox>
+
 
 viewBooks::viewBooks(QWidget *parent) :
     QDialog(parent),
@@ -89,4 +91,24 @@ void viewBooks::setBooks(const QStringList &names, const QStringList &prices)
 {
     // دي من الماضي لما كنت بتستخدم الـ QStringList مش من قاعدة بيانات
     // ممكن تحذفها أو تخليها تدعو loadBooksFromDatabase بدلًا منها
+}
+void viewBooks::on_deleteButton_clicked()
+{
+    int row = ui->tableWidget->currentRow();
+    if (row >= 0) {
+        QString bookName = ui->tableWidget->item(row, 0)->text();
+
+        // احذف من قاعدة البيانات (SQLite) إذا كنت رابط القاعدة
+        QSqlQuery query;
+        query.prepare("DELETE FROM books WHERE name = :name");
+        query.bindValue(":name", bookName);
+        if (query.exec()) {
+            ui->tableWidget->removeRow(row);
+            QMessageBox::information(this, "Deleted", "Book deleted successfully.");
+        } else {
+            QMessageBox::warning(this, "Error", "Failed to delete book.");
+        }
+    } else {
+        QMessageBox::warning(this, "No selection", "Please select a book to delete.");
+    }
 }

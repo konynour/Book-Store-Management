@@ -167,7 +167,7 @@
        <item>
         <widget class="QPushButton" name="bookDetailsButton">
          <property name="text">
-          <string>📊 sales History</string>
+          <string>📊 Sales History</string>
          </property>
          <property name="minimumHeight">
           <number>50</number>
@@ -187,6 +187,35 @@
            }
            QPushButton:pressed {
                background-color: #117864;
+           }
+          </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="categoriesButton">
+         <property name="text">
+          <string>📂 Categories</string>
+         </property>
+         <property name="minimumHeight">
+          <number>50</number>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+           QPushButton {
+               background-color: #f39c12;
+               color: white;
+               font-size: 16px;
+               font-weight: bold;
+               border-radius: 8px;
+               padding: 12px;
+               border: none;
+           }
+           QPushButton:hover {
+               background-color: #e67e22;
+           }
+           QPushButton:pressed {
+               background-color: #ca6f1e;
            }
           </string>
          </property>

@@ -5,6 +5,8 @@
 #include "viewbooks.h"
 #include "editbook.h"
 #include "SalesHistory.h"
+#include "categories.h"
+
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -19,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
     , viewbooks(new viewBooks(this))
     , editDialog(new editbook(this))
     , detailsDialog(new SalesHistory(this))
+    , categoriesDialog(new Categories(this))
+
 {
     ui->setupUi(this);
 
@@ -32,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->viewBooksButton, &QPushButton::clicked, this, &MainWindow::showBooks);
     connect(ui->editBookButton, &QPushButton::clicked, this, &MainWindow::editBookFun);
     connect(ui->bookDetailsButton, &QPushButton::clicked, this, &MainWindow::showBookDetails);
+    connect(ui->categoriesButton, &QPushButton::clicked, this, &MainWindow::showCategories);
+
 
     connectToDatabase(); // الاتصال بقاعدة البيانات
     createTables();
@@ -48,6 +54,8 @@ MainWindow::~MainWindow()
     delete viewbooks;
     delete editDialog;
     delete detailsDialog;
+    delete categoriesDialog;
+
 }
 
 void MainWindow::connectToDatabase()
@@ -216,4 +224,8 @@ void MainWindow::createAdminUserIfNotExists()
     } else {
         qDebug() << "❌ Failed to check admin user:" << query.lastError().text();
     }
+}
+void MainWindow::showCategories()
+{
+    categoriesDialog->exec();
 }

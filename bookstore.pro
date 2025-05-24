@@ -14,6 +14,7 @@ CONFIG += c++17
 SOURCES += \
     SalesHistory.cpp \
     addbox.cpp \
+    categories.cpp \
     editbook.cpp \
     loginpage.cpp \
     main.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     SalesHistory.h \
     addbox.h \
+    categories.h \
     editbook.h \
     loginpage.h \
     mainwindow.h \
@@ -35,6 +37,7 @@ HEADERS += \
 FORMS += \
     SalesHistory.ui \
     addbox.ui \
+    categories.ui \
     editbook.ui \
     loginpage.ui \
     mainwindow.ui \

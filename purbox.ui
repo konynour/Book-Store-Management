@@ -131,6 +131,22 @@
     <string> OK</string>
    </property>
   </widget>
+
+  <!-- Delete Button -->
+  <widget class="QPushButton" name="deleteButton">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>300</y>
+     <width>130</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete Book</string>
+   </property>
+  </widget>
+
  </widget>
  <resources/>
  <connections/>

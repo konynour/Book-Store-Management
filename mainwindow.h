@@ -8,6 +8,8 @@
 #include "viewbooks.h"
 #include "editbook.h"
 #include "SalesHistory.h"  // غيرنا من bookdialog.h إلى saleshistory.h
+#include "categories.h"   // استيراد التصنيفات
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,6 +36,7 @@ private slots:
     void onBookEdited(const QString &oldName, const QString &newName, const QString &newPrice);
 
     void showBookDetails();  // عرض تفاصيل الكتاب الجديدة
+    void showCategories();   // أعلن الدالة هنا
 
 private:
     Ui::MainWindow *ui;
@@ -45,6 +48,8 @@ private:
     QStringList nameList;
     QStringList priceList;
     void connectToDatabase();  // **تعريف الدالة هنا**
+    Categories *categoriesDialog;  // أعلن العضو هنا
+
     void createTables();
     void createAdminUserIfNotExists();
 
